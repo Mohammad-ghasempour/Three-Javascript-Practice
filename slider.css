@@ -1,0 +1,55 @@
+body{
+    background-color: rgb(148, 72, 253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+.top{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    
+}
+.arrow{
+    height: 60px;
+    filter: invert(90%);
+    /* the above line change the color of the png image*/
+
+}
+.right{
+    transform: rotate(180deg);
+}
+.frame{
+    width: 600px;
+    height: 400px;
+    overflow:hidden;
+}
+.images{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.bottom{
+    display: flex;
+    gap: 20px;
+}
+
+.button{
+height: 15px;
+width: 15px;
+border-radius: 50%;
+border: 1px solid white;
+
+}
