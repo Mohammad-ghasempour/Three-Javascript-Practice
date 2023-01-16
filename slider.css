@@ -38,7 +38,8 @@ body{
 
 .slider{
     display: flex;
-    transition: all 800ms ;
+    transition: all 800ms ease;
+    transition-timing-function: ease
 }
 .images{
     height: 100%;
