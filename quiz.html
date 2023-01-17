@@ -1,48 +1,50 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./quiz.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./quiz.css" />
     <title>Quis project</title>
-</head>
-<body>
-   
+  </head>
+  <body>
     <div class="container">
-        <div class="game">
-            <div class="content">
-            <h1 class="question">Which of this fish is actually a fish?</h1>
-            <div class="answers">
-                <div class="answer">
-                    <input type="radio" id="answer1" value="false"/>
-                    <label for="answer1" >Answer1</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" id="answer2" value="false"/>
-                    <label for="answer2" >Answer2</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" id="answer3" value="false"/>
-                    <label for="answer3" >Answer3</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" id="answer4" value="false"/>
-                    <label for="answer4" >Answer4</label>
-                </div>
+      <div class="game">
+        <div class="content">
+          <h1 class="question">Which of this fish is actually a fish?</h1>
+          <div class="answers">
+            <div class="answer">
+              <input type="radio" id="answer1" name="answer" value="false" />
+              <label for="answer1">Answer1</label>
             </div>
+            <div class="answer">
+              <input type="radio" id="answer2" name="answer" value="false" />
+              <label for="answer2">Answer2</label>
             </div>
-            <button class="submit">Submit</button>
+            <div class="answer">
+              <input type="radio" id="answer3" name="answer" value="false" />
+              <label for="answer3">Answer3</label>
+            </div>
+            <div class="answer">
+              <input type="radio" id="answer4" name="answer" value="false" />
+              <label for="answer4">Answer4</label>
+            </div>
+          </div>
         </div>
+        <button class="submit">Submit</button>
+      </div>
 
-        <div class="result">
-            <h1>Congratulations</h1>
-            <h3 class="correct">Correct answer: 0</h3>
-            <h3 class="wront">Wrong answer: 0</h3>
-            <h2 class="score">Score: -30</h2>
-            <button class="play">Play again</button>
-        </div>
+      <div class="result">
+        <h1>Congratulations</h1>
+        <h3 class="correct">Correct answer: 0</h3>
+        <h3 class="wrong">Wrong answer: 0</h3>
+        <h2 class="score">Score: -30</h2>
+        <button class="play">Play again</button>
+      </div>
     </div>
     <script src="./quiz.js"></script>
-</body>
+  </body>
 </html>
