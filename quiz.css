@@ -16,6 +16,11 @@ body {
 .game {
     /* display: none; */
 }
+.questionNumber{
+    text-align: center;
+    margin-top: 5px;
+    
+}
 
 .content {
     padding: 50px;
@@ -34,12 +39,14 @@ body {
 .submit {
     color: white;
     background-color: rebeccapurple;
+    font-size: 20px;
     border: none;
     width: 100%;
     height: 50px;
     cursor: pointer;
     position: absolute;
     bottom: 0px;
+
 }
 
 .result {
