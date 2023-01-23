@@ -11,7 +11,7 @@ const data = [
     name: "BULL'S Success Steel Darts | Black",
     img: "https://cdn.shopify.com/s/files/1/2099/9697/products/Kvalitetstid_no-BULLS-Success-Staldart-Svart-23g-Dartpiler-Bulls_800x.jpg?v=1659023767",
     price: 35,
-    cat: "Hart Tip",
+    cat: "Hard Tip",
   },
   {
     id: 3,
@@ -92,9 +92,10 @@ loadProducts(data);
 
 const setCategories = () => {
   const allCats = data.map((item) => item.cat);
-  const newAllCats = [...new Set(allCats)];
-  const all = newAllCats.map((item, index) => `<span class="cat">${item}</span>`).join("");
-  categorise.innerHTML =all
+  const unicCats = allCats.filter((item, index) => {
+    return allCats.indexOf(item) === index;
+  });
+  categorise.innerHTML= unicCats.map(item=> `<span class="cat">${item}</span>`).join("");
 };
 
 setCategories();
