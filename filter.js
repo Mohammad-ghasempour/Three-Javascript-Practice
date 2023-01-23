@@ -67,6 +67,8 @@ const data = [
 const productsContainer = document.querySelector(".products");
 const searchInput = document.querySelector(".search");
 const categorise = document.querySelector(".cats");
+const range = document.querySelector(".priceRange");
+const priceValue = document.querySelector(".priceValue");
 
 const loadProducts = (filteredProducts) => {
   productsContainer.innerHTML = filteredProducts
@@ -96,13 +98,34 @@ const setCategories = () => {
   const unicCats = allCats.filter((item, index) => {
     return allCats.indexOf(item) === index;
   });
-  categorise.innerHTML= unicCats.map(item=> `<span class="cat">${item}</span>`).join("");
+  categorise.innerHTML = unicCats
+    .map((item) => `<span class="cat">${item}</span>`)
+    .join("");
 
-  categorise.addEventListener("click" , (e)=>{
-    const selectedCategory= e.target.textContent;
-    
-    selectedCategory === "All" ? loadProducts(data) : loadProducts(data.filter(item=> item.cat === selectedCategory))
-  })
+  categorise.addEventListener("click", (e) => {
+    const selectedCategory = e.target.textContent;
+
+    selectedCategory === "All"
+      ? loadProducts(data)
+      : loadProducts(data.filter((item) => item.cat === selectedCategory));
+  });
+};
+
+const setPrice = () => {
+  const priceList = data.map((item) => item.price);
+  const minPrice = Math.min(...priceList);
+  const maxPrice = Math.max(...priceList);
+  range.min = minPrice;
+  range.max = maxPrice;
+  range.value = maxPrice;
+  priceValue.innerHTML = "$" + range.value;
+  console.log(
+    range.addEventListener("input", (e) => {
+      priceValue.innerHTML = "$" + e.target.value;
+      loadProducts(data.filter((item) => item.price <= e.target.value));
+    })
+  );
 };
 
 setCategories();
+setPrice();
