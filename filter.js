@@ -92,10 +92,17 @@ loadProducts(data);
 
 const setCategories = () => {
   const allCats = data.map((item) => item.cat);
+  allCats.unshift("All");
   const unicCats = allCats.filter((item, index) => {
     return allCats.indexOf(item) === index;
   });
   categorise.innerHTML= unicCats.map(item=> `<span class="cat">${item}</span>`).join("");
+
+  categorise.addEventListener("click" , (e)=>{
+    const selectedCategory= e.target.textContent;
+    
+    selectedCategory === "All" ? loadProducts(data) : loadProducts(data.filter(item=> item.cat === selectedCategory))
+  })
 };
 
 setCategories();
