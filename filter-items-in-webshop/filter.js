@@ -3,7 +3,7 @@ const data = [
     id: 1,
     name: "Electronic dartboard",
     img: "https://cdn.shopify.com/s/files/1/2099/9697/products/Kvalitetstid_no-Dartskap-m-Elektronisk-dartskive-og-dartpiler-CB-90-Dart-skap-Karella_800x.jpg?v=1650450666",
-    price: 900,
+    price: 100,
     cat: "Darts Board",
   },
   {
