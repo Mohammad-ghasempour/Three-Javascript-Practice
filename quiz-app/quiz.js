@@ -48,8 +48,12 @@ let wrongCount = 0;
 let total = 0;
 let selectedAnswer;
 
-const showQuestion = (qNumber) => {
+const showPageNumber = () => {
   questionNumber.textContent = `${qIndex + 1} / ${data.length} `;
+};
+
+const showQuestion = (qNumber) => {
+  showPageNumber();
   if (qIndex === data.length) return showResult();
   selectedAnswer = null;
   question.textContent = data[qNumber].question;
@@ -72,16 +76,18 @@ const selectAnswer = () => {
   });
 };
 
+const submitedAnswer = () => {
+  if (selectedAnswer !== null) {
+    selectedAnswer === "true" ? correctCount++ : wrongCount++;
+    qIndex++;
+    showQuestion(qIndex);
+  } else {
+    alert("Please choose an answer!");
+  }
+};
+
 const submitAnswer = () => {
-  submit.addEventListener("click", () => {
-    if (selectedAnswer !== null) {
-      selectedAnswer === "true" ? correctCount++ : wrongCount++;
-      qIndex++;
-      showQuestion(qIndex);
-    } else {
-      alert("Please choose an answer!");
-    }
-  });
+  submit.addEventListener("click", submitedAnswer);
 };
 
 const playAgain = () => {
@@ -105,11 +111,13 @@ const showResult = () => {
   resultScreen.querySelector(".score").textContent = `Score: ${total} %`;
 };
 
-play.addEventListener("click", () => {
+const playGameAgain = () => {
   gameScreen.style.display = "block";
   resultScreen.style.display = "none";
   playAgain();
-});
+};
+
+play.addEventListener("click", playGameAgain);
 
 showQuestion(qIndex);
 submitAnswer();

@@ -1,11 +1,18 @@
+
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const slider = document.querySelector(".slider");
 const allImages = document.querySelectorAll(".images");
 const bottom = document.querySelector(".bottom");
-
 let sliderNumber = 1;
 const imagesLength = allImages.length;
+
+const loadAllEventListener = () => {
+  right.addEventListener("click", showNextSlide);
+  left.addEventListener("click", showPrevSlide);
+};
+
+
 
 const resetBG = () => {
   buttons.forEach((button) => {
@@ -42,12 +49,13 @@ const prevSlide = () => {
   sliderNumber--;
 };
 
-right.addEventListener("click", () => {
+const showNextSlide = () => {
   sliderNumber < imagesLength ? nextSlide() : firstSlide();
-});
-left.addEventListener("click", () => {
+};
+
+const showPrevSlide = () => {
   sliderNumber > 1 ? prevSlide() : lastSlide();
-});
+};
 
 for (let i = 0; i < imagesLength; i++) {
   const div = document.createElement("div");
@@ -61,8 +69,9 @@ buttons[0].style.backgroundColor = "white";
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     slider.style.transform = `translateX(-${index * 600}px)`;
-
     resetBG();
     button.style.backgroundColor = "white";
   });
 });
+
+loadAllEventListener();

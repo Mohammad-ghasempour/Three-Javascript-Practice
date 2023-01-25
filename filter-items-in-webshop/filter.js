@@ -70,6 +70,12 @@ const categorise = document.querySelector(".cats");
 const range = document.querySelector(".priceRange");
 const priceValue = document.querySelector(".priceValue");
 
+const loadAllEventListener = () => {
+  searchInput.addEventListener("keyup", lookUp);
+  range.addEventListener("input", loadProductByRangeFilter);
+  categorise.addEventListener("click", showEachCategory);
+};
+
 const loadProducts = (filteredProducts) => {
   productsContainer.innerHTML = filteredProducts
     .map(
@@ -83,14 +89,19 @@ const loadProducts = (filteredProducts) => {
     .join("");
 };
 
-searchInput.addEventListener("keyup", (e) => {
+const lookUp = (e) => {
   const keyword = e.target.value.toLowerCase();
   loadProducts(
     data.filter((item) => item.name.toLowerCase().indexOf(keyword) !== -1)
   );
-});
+};
 
-loadProducts(data);
+const showEachCategory = (e) => {
+  const selectedCategory = e.target.textContent;
+  selectedCategory === "All"
+    ? loadProducts(data)
+    : loadProducts(data.filter((item) => item.cat === selectedCategory));
+};
 
 const setCategories = () => {
   const allCats = data.map((item) => item.cat);
@@ -101,14 +112,11 @@ const setCategories = () => {
   categorise.innerHTML = unicCats
     .map((item) => `<span class="cat">${item}</span>`)
     .join("");
+};
 
-  categorise.addEventListener("click", (e) => {
-    const selectedCategory = e.target.textContent;
-
-    selectedCategory === "All"
-      ? loadProducts(data)
-      : loadProducts(data.filter((item) => item.cat === selectedCategory));
-  });
+const loadProductByRangeFilter = (e) => {
+  priceValue.innerHTML = "$" + e.target.value;
+  loadProducts(data.filter((item) => item.price <= e.target.value));
 };
 
 const setPrice = () => {
@@ -119,13 +127,9 @@ const setPrice = () => {
   range.max = maxPrice;
   range.value = maxPrice;
   priceValue.innerHTML = "$" + range.value;
-  console.log(
-    range.addEventListener("input", (e) => {
-      priceValue.innerHTML = "$" + e.target.value;
-      loadProducts(data.filter((item) => item.price <= e.target.value));
-    })
-  );
 };
 
+loadProducts(data);
+loadAllEventListener();
 setCategories();
 setPrice();
